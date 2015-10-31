@@ -1,0 +1,38 @@
+{
+  "name": "cycle-test",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "semistandard": "node_modules/.bin/semistandard",
+    "prebrowserify": "mkdir -p dist && npm run semistandard",
+    "browserify": "browserify src/index.js -t babelify --presets es2015 -g uglifyify -o dist/app.js",
+    "prewatch": "mkdir -p dist",
+    "watch": "watchify src/index.js -t [ babelify --presets es2015 ] -o dist/app.js -d -v --poll",
+    "start": "npm install && npm run watch"
+  },
+  "dependencies": {
+    "@cycle/core": "^5.0.0",
+    "@cycle/dom": "^7.0.0",
+    "@cycle/fetch": "^4.0.0",
+    "cycle-pushstate-driver": "^3.0.0",
+    "cycle-vtree-switcher": "^1.0.0",
+    "es6-promise": "^3.0.2",
+    "rx": "^4.0.6",
+    "whatwg-fetch": "^0.10.0"
+  },
+  "engines": {
+    "node": "4.1.x",
+    "npm": "2.14.x"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.14",
+    "babel-preset-es2015": "^6.0.8",
+    "babelify": "^7.0.2",
+    "browserify": "^12.0.1",
+    "semistandard": "^7.0.2",
+    "tape": "^4.2.1",
+    "uglifyify": "^3.0.1",
+    "watchify": "^3.6.0"
+  }
+}
